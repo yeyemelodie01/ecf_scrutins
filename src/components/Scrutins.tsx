@@ -38,7 +38,8 @@ const Scrutins: React.FC = () => {
                     <th>Titre</th>
                     <th>Date de début</th>
                     <th>Date de fin</th>
-                    <th>Actions</th>
+                    <th>Membres</th>
+                    <th>Stats</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,12 @@ const Scrutins: React.FC = () => {
                             <IonButton onClick={(e) => {
                                 e.stopPropagation(); // Empêche la redirection
                                 window.location.href = `${scrutin.id}/members/`;
+                            }}>Voir</IonButton>
+                        </td>
+                        <td>
+                            <IonButton onClick={(e) => {
+                                e.stopPropagation(); // Empêche la redirection
+                                window.location.href = `${scrutin.id}/members/stats/`;
                             }}>Voir</IonButton>
                         </td>
                     </tr>

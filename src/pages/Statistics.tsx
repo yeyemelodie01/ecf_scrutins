@@ -1,4 +1,5 @@
 import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from "@ionic/react";
+import StatsDisplay from "../components/StatsDisplay";
 
 const Statistics: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ const Statistics: React.FC = () => {
                         <IonTitle size="large">Statistics</IonTitle>
                     </IonToolbar>
                 </IonHeader>
+                <StatsDisplay />
             </IonContent>
         </IonPage>
     );

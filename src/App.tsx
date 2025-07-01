@@ -50,7 +50,7 @@ const App: React.FC = () => (
         <Route exact path="/:scrutinId/members/">
           <Vote />
         </Route>
-        <Route exact path="/stats">
+        <Route exact path="/:scrutinId/members/stats">
           <Statistics />
         </Route>
       </IonRouterOutlet>
