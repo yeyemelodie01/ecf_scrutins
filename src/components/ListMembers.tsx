@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {IonButton} from "@ionic/react";
+import {IonButton, IonText} from "@ionic/react";
 import {useParams} from "react-router";
 import './ListMembers.css'
 
@@ -29,17 +29,16 @@ const ListMembers: React.FC = () => {
         loadMembers();
     }, []);
 
-
     return (
         <div>
             <h1>Liste des Membres</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>Prénom</th>
                         <th>Nom</th>
+                        <th>Prénom</th>
                         <th>Date de naissance</th>
-                        <th>Statut de vote</th>
+                        <th>État de vote</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,9 +49,29 @@ const ListMembers: React.FC = () => {
                             <td>{new Date(member.birth_date).toLocaleDateString()}</td>
                             <td>
                                 {member.has_voted ? (
-                                    "A déjà voté"
+                                    <IonText color="success">A voté</IonText>
                                 ) : (
-                                    <IonButton>Voter</IonButton>
+                                    <IonButton onClick={async () => {
+                                        try {
+                                            const res = await fetch(`http://localhost:3000/api/v1/scrutins/${scrutinId}/members/${member.id}/vote`, {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify({ has_voted: 1 })
+                                            });
+                                            if (!res.ok) throw new Error(`Erreur HTTP : ${res.status}`);
+                                            const updatedData = await res.json();
+                                            console.log('Membre mis à jour:', updatedData);
+                                            setMembers((prevMembers) =>
+                                                prevMembers.map((m) =>
+                                                    m.id === member.id ? { ...m, has_voted: 1 } : m
+                                                )
+                                            );
+                                        } catch (err) {
+                                            console.error('Erreur de mise à jour du membre :', err);
+                                        }
+                                    }}>Voter</IonButton>
                                 )}
                             </td>
                         </tr>

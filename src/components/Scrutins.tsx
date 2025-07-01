@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import './Scrutins.css'
+import {IonButton} from "@ionic/react";
 
 const Scrutins: React.FC = () => {
     const [scrutins, setScrutins] = useState<Scrutin[]>([]);
@@ -37,17 +38,21 @@ const Scrutins: React.FC = () => {
                     <th>Titre</th>
                     <th>Date de début</th>
                     <th>Date de fin</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {scrutins.map((scrutin) => (
-                    <tr onClick={() => {
-                        // Redirection vers la page de scrutin
-                        window.location.href = `${scrutin.id}/members/`;
-                    } } key={scrutin.id}>
+                    <tr key={scrutin.id}>
                         <td>{scrutin.title}</td>
                         <td>{new Date(scrutin.starts_at).toLocaleString()}</td>
                         <td>{new Date(scrutin.ends_at).toLocaleString()}</td>
+                        <td>
+                            <IonButton onClick={(e) => {
+                                e.stopPropagation(); // Empêche la redirection
+                                window.location.href = `${scrutin.id}/members/`;
+                            }}>Voir</IonButton>
+                        </td>
                     </tr>
                 ))}
             </tbody>
