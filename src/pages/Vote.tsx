@@ -1,4 +1,5 @@
 import {IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from "@ionic/react";
+import ListMembers from "../components/ListMembers";
 
 const Vote: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ const Vote: React.FC = () => {
                         <IonTitle size="large">Liste des Membres</IonTitle>
                     </IonToolbar>
                 </IonHeader>
+                <ListMembers />
             </IonContent>
         </IonPage>
     );

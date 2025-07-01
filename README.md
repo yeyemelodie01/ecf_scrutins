@@ -2,3 +2,4 @@
 
 - Création des pages d'accueil, de vote et de statistiques avec la naviguation basic
 - Ajout des routes pour chaque page
+- Ajout dans la page d'accueil l'affichage de tous les scrutins disponibles
