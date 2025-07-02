@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {IonButton, IonText} from "@ionic/react";
 import {useParams} from "react-router";
-import './ListMembers.css'
+import './style/ListMembers.css'
 
 const ListMembers: React.FC = () => {
     const [members, setMembers] = useState<Member[]>([]);
@@ -32,7 +32,7 @@ const ListMembers: React.FC = () => {
     return (
         <div>
             <h1>Liste des Membres</h1>
-            <table>
+            <table className="list-members-table">
                 <thead>
                     <tr>
                         <th>Nom</th>
@@ -78,6 +78,12 @@ const ListMembers: React.FC = () => {
                     ))}
                 </tbody>
             </table>
+
+            <div className="back-btn">
+                <IonButton routerLink="/home">
+                    Retour
+                </IonButton>
+            </div>
         </div>
     )
 }

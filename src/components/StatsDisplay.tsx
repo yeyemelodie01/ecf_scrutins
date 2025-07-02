@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
+import {Bar, BarChart, Tooltip, XAxis, YAxis} from "recharts";
+import './style/StatsDisplay.css'
+import {IonButton} from "@ionic/react";
 
 const StatsDisplay: React.FC = () => {
     const [stats, setStats] = useState<Stats | null>(null);
@@ -30,7 +33,8 @@ const StatsDisplay: React.FC = () => {
 
     return (
         <div>
-            <table>
+            <h1>Statistique des votes</h1>
+            <table className="stats-table">
                 <thead>
                     <tr>
                         <th>Total</th>
@@ -46,6 +50,29 @@ const StatsDisplay: React.FC = () => {
                     )}
                 </tbody>
             </table>
+
+            <BarChart
+                width={500}
+                height={300}
+                data={
+                    [
+                        { name: 'Total', value: stats ? stats.total : 0 },
+                        { name: 'À voté', value: stats ? stats.voted : 0 }
+                    ]
+                }
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
+                <Bar dataKey="value" fill="#8884d8" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+            </BarChart>
+
+            <div className="back-btn">
+                <IonButton routerLink="/home">
+                    Retour
+                </IonButton>
+            </div>
         </div>
     )
 }

@@ -11,4 +11,9 @@
 - Ajout d'une page qui me permettra de voir les statistiques du scrutin
 - Modification de l'API en ajoutant une route qui me permet d'accéder à la fonction getStats ainsi que dans le controller une fonction asynchrone getStats qui me permet de récupérer les statistiques du scrutin
 - Affichage des statistique sous forme de tableau
-- Ajout d'une colonne dans le tableau de scrutins afin de pouvoir accéder aux statistiques du scrutin
+- Ajout d'une colonne dans le tableau de scrutins afin de pouvoir accéder aux statistiques pour chaque scrutin
+- Ajout d'un dossier styles dans lequel se trouve les fichiers css de chaque page
+- Ajout d'une classe css pour le tableau des statistiques, scrutins et membres
+- Ajout d'un graphique de type bar chart pour les statistiques avec la librairie recharts
+- Mise en place du graphique sur la page des statistiques
+- Ajout d'un bouton pour revenir à la page d'accueil depuis la page des statistiques et de vote

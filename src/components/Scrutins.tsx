@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import './Scrutins.css'
+import './style/Scrutins.css'
 import {IonButton} from "@ionic/react";
 
 const Scrutins: React.FC = () => {
@@ -32,7 +32,7 @@ const Scrutins: React.FC = () => {
     <div>
       <h1>Scrutins</h1>
 
-        <table>
+        <table className="scrutins-table">
             <thead>
                 <tr>
                     <th>Titre</th>
